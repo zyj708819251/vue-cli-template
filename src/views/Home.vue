@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import { isNull, tonum } from '@/utils/utils';
+import { isNull, tonum } from '@utils/utils';
 
 import { ref, reactive,onMounted } from '@vue/composition-api';
 
-import {getList,login} from '@/api/home';
+import {getList,login} from '@api/home';
 export default {
   setup() {
     const count = ref(0); //count初始值为0，会相应变化
@@ -57,7 +57,7 @@ export default {
 </script>
 <style lang="scss">
 .home {
-  @include width(100%, 10px);
+  @include width(100%, 50%);
   height: 100px;
   background: #0074d9;
 

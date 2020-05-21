@@ -1,14 +1,29 @@
+const path = require('path');
 module.exports = {
   lintOnSave: false,
-  publicPath: process.env.NODE_ENV === 'prod'
-    ? './' : '/',
+  publicPath: process.env.NODE_ENV === 'prod' ?
+    './' : '/',
   css: {
     loaderOptions: {
       sass: {
-        prependData: '@import "./src/assets/scss/scss.scss";'
+        prependData: '@import "@assets/scss/scss.scss";'
       }
     }
   },
+  /* 是否在构建生产包时生成 sourceMap 文件，false将提高构建速度 */
+  productionSourceMap: false,
+  configureWebpack: { // 覆盖webpack默认配置的都在这里
+    resolve: { // 配置解析别名
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        '@api': path.resolve(__dirname, './src/api'),
+        '@utils': path.resolve(__dirname, './src/utils'),
+        '@views': path.resolve(__dirname, './src/views'),
+        '@assets': path.resolve(__dirname, './src/assets')
+      }
+    }
+  },
+
   devServer: {
     open: true,
     host: 'localhost',
