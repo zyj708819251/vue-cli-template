@@ -18,8 +18,7 @@ export default {
   },
   methods: {
     autoLogin() {
-      console.log(this.user);
-    	if (this.user!=null) {
+    	if (this.user==null) {
     		this.$router.push('/Login');
     	}
     }

@@ -12,30 +12,28 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
-
   data() {
-
-
     return {
       ruleForm: {
         username: 'admin',
-        password: '123456',
+        password: '123456'
       },
       rules: {
-        username: [{ required: true, message: '请输入用户名', trigger: 'blur'  }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur'  }],
+        username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
       }
     };
   },
   methods: {
+    ...mapMutations(['setuser']),
     submitForm(formName) {
-
       this.$refs[formName].validate(valid => {
         if (valid) {
-          localStorage.setItem('user',JSON.stringify(this.ruleForm));
+          localStorage.setItem('user', JSON.stringify(this.ruleForm));
+          this.setuser(this.ruleForm)
           this.$router.push('/Home');
-
         } else {
           console.log('error submit!!');
           return false;

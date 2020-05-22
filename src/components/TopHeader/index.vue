@@ -1,5 +1,5 @@
 <template>
-  <div class="header">监控手段获得健康环境</div>
+  <div class="header">监控手段获得健康环境{{user.username}}</div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ import { mapState } from 'vuex';
 export default {
   name: 'TopHeader',
   computed: {
-    // ...mapState(['user'])
+    ...mapState(['user'])
   }
 };
 </script>
