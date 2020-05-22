@@ -3,15 +3,30 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/',
+const routes = [
+	{
+	  path: '/',
+	  name: '主页',
+    redirect: '/Home',
+	},{
+    path: '/Home',
     name: 'Home',
-    component: () => import( /* webpackChunkName: "about" */ '@views/Home.vue')
+    component: () => import('@views/Home.vue'),
+    redirect: '/Home/Index1',
+    children: [{
+        path: 'Index1',
+        component: () => import('@com/Content/index1.vue'),
+      },
+      {
+        path: 'Index2',
+        component: () => import('@com/Content/index2.vue'),
+      }
+    ]
   },
   {
-    path: '/Form',
-    name: 'Form',
-    component: () => import( /* webpackChunkName: "about" */ '@views/Form.vue')
+    path: '/Login',
+    name: 'Login',
+    component: () => import('@views/Login.vue')
   }
 ]
 
